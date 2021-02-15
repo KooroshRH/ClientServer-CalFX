@@ -19,4 +19,24 @@ public class Client
             e.printStackTrace();
         }
     }
+
+    private void Send(String data)
+    {
+        try {
+            output.writeUTF(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void Close()
+    {
+        try {
+            input.close();
+            output.close();
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
