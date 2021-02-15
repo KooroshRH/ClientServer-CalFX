@@ -1,19 +1,17 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 public class Client
 {
     private Socket socket;
-    private DataInputStream input;
+    private BufferedReader input;
     private DataOutputStream output;
 
     public Client(String ipAddress, int port)
     {
         try {
             socket = new Socket(ipAddress, port);
-            input = new DataInputStream(socket.getInputStream());
+            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             output = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,7 +33,7 @@ public class Client
         while(inputData.equals(""))
         {
             try {
-                inputData = input.readUTF();
+                inputData = input.readLine();
             } catch (IOException e) {
                 e.printStackTrace();
             }
