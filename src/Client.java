@@ -29,6 +29,20 @@ public class Client
         }
     }
 
+    private String Receive()
+    {
+        String inputData = "";
+        while(inputData.equals(""))
+        {
+            try {
+                inputData = input.readUTF();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return inputData;
+    }
+
     private void Close()
     {
         try {
