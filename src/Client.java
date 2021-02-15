@@ -4,21 +4,21 @@ import java.net.Socket;
 public class Client
 {
     private Socket socket;
-    private BufferedReader input;
+    private DataInputStream input;
     private DataOutputStream output;
 
     public Client(String ipAddress, int port)
     {
         try {
             socket = new Socket(ipAddress, port);
-            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            input = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
             output = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void Send(String data)
+    private void send(String data)
     {
         try {
             output.writeUTF(data);
@@ -27,13 +27,13 @@ public class Client
         }
     }
 
-    private String Receive()
+    private String receive()
     {
         String inputData = "";
         while(inputData.equals(""))
         {
             try {
-                inputData = input.readLine();
+                inputData = input.readUTF();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -41,7 +41,7 @@ public class Client
         return inputData;
     }
 
-    private void Close()
+    private void close()
     {
         try {
             input.close();
