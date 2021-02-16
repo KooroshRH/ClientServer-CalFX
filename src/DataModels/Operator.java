@@ -1,3 +1,5 @@
+package DataModels;
+
 public enum Operator
 {
     ADD,

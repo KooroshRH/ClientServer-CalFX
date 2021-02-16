@@ -1,3 +1,5 @@
+package Components;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -38,6 +40,7 @@ public class Client
                 e.printStackTrace();
             }
         }
+
         return inputData;
     }
 
