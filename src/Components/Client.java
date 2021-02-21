@@ -20,7 +20,7 @@ public class Client
         }
     }
 
-    private void send(String data)
+    public void send(String data)
     {
         try {
             output.writeUTF(data);
@@ -29,7 +29,7 @@ public class Client
         }
     }
 
-    private String receive()
+    public String receive()
     {
         String inputData = "";
         while(inputData.equals(""))
