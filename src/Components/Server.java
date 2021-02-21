@@ -12,7 +12,7 @@ public class Server
     private DataOutputStream output;
     private DataInputStream input;
 
-    private final String SEPARATOR = "<>";
+    public static final String SEPARATOR = "<>";
 
     public Server(int port)
     {
@@ -58,8 +58,8 @@ public class Server
     {
         String[] dataArray = data.split(SEPARATOR);
         int firstOperand = Integer.parseInt(dataArray[0]);
-        int secondOperand = Integer.parseInt(dataArray[1]);
-        Operator operator = Operator.values()[Integer.parseInt(dataArray[2])];
+        int secondOperand = Integer.parseInt(dataArray[2]);
+        Operator operator = Operator.values()[Integer.parseInt(dataArray[1])];
         switch (operator)
         {
             case ADD:
